@@ -6,6 +6,9 @@ public class Triangle {
    public Point a;
    public Point b;
    public Point c;
+   public double lenghtA;
+   public double lenghtB;
+   public double lenghtC;
 
    public Triangle(Point a, Point b, Point c) {
       this.a = a;
@@ -15,15 +18,9 @@ public class Triangle {
 
    public double area() {
       
-	  double lenghtFirst = this.a.distanceTo(this.b);
-	  double lenghtSecond = this.b.distanceTo(this.c);
-	  double lenghtThird = this.c.distanceTo(this.a);
+	  double p = (this.lenghtA + this.lenghtB + this.lenghtC) / 2;
 	  
-	  double p = (lenghtFirst + lenghtSecond + lenghtThird) / 2;
-	  
-	  double area = Math.sqrt(p*(p-lenghtFirst)*(p-lenghtSecond)*(p-lenghtThird));
-	  
-      return area;
+	  return Math.sqrt(p*(p-this.lenghtA)*(p-this.lenghtB)*(p-this.lenghtC));
    }
    
    public static void main (String[] args) {
@@ -34,13 +31,15 @@ public class Triangle {
 	   
 	   Triangle triangle = new Triangle(a,b,c);
 	   
-	   if (triangle.canCreate()) {
+	   triangle.countLenghts();
+	   
+	   if (triangle.exists()) {
 		   
 		    // area
 		   
 			double area = triangle.area();
 	   
-			Triangle.showArea(area); 
+			triangle.showArea(area); 
 			
 			// max lenght
 
@@ -48,48 +47,50 @@ public class Triangle {
 			
 			double max = service.max(triangle);
 			
-			Triangle.showMax(max);
+			triangle.showMax(max);
 		   
 	   } else {
 			   
-			Triangle.showError();   
+			triangle.showError();   
 			   
-		   }	   
+		   } 
+	   	   
    }
    
-   public boolean canCreate() {
+   public void countLenghts() {
 	   
-	  if ((this.a.x == this.b.x) || (this.b.x == this.c.x) || (this.c.x == this.a.x)) {
-		  
-		  return false;
-		  
-	  } else if ((this.a.y == this.b.y) || (this.b.y == this.c.y) || (this.c.y == this.a.y)) {
-		  
-		  return false;
-		  
-	  } else if (this.a.equals(this.b) || this.b.equals(this.c) || this.c.equals(this.a)) {
-				  
-		  return false;
-		  
-	  } else {
+	  this.lenghtA = this.a.distanceTo(this.b);
+	  this.lenghtB = this.b.distanceTo(this.c);
+	  this.lenghtC = this.c.distanceTo(this.a);   
+	   
+   }
+   
+   public boolean exists() {
+	   
+	  if (this.lenghtA + this.lenghtB > this.lenghtC) {
 		  
 		  return true;
 		  
+	  } else {
+		  
+		  return false;
+		  
 	  }
+	  
    }
    
-   public static void showMax(double max) {
+   public void showMax(double max) {
 	   
 	   System.out.println("Max lenght: " + max);
 	   
    }  
-   public static void showArea(double message) {
+   public void showArea(double message) {
 	   
 	   System.out.println("Area of triangle: " + message);
 	   
    }
    
-   public static void showError() {
+   public void showError() {
 	   
 	   System.out.println("Triangle is incorrect");
 	   
