@@ -2,58 +2,45 @@ package shestakov;
 
 public class Factorial {
 	
-	int result;
+	final int inputValue;
 	
-	public Factorial() {
+	public Factorial(int value) {
 		
-		this.result = 1;
+		this.inputValue = value;
 		
 	}
 	
 	public static void main(String[] args) {
 		
-		for(String arg: args) {
-			
-			int x = Integer.parseInt(arg);
+		Factorial factorial = new Factorial(Integer.parseInt(args[0]));
 				
-			Factorial factorial = new Factorial();
+		long result = factorial.calculate();
 				
-			if(x>=0 && x%1==0) {
+		factorial.showMessage(result);
 					
-				factorial.calculate(x);
-				
-				factorial.showMessage(x);
-					
-			} else {
-					
-				factorial.showError();
-					
-			}
-		}
 	}
 	
-	public void calculate(int x) {
+	public long calculate() {
 		
-		if(x!=0) {
+		long result = 1;
+		
+		if(this.inputValue!=0) {
 			
-			for(int i=1;i<=x;i++) {
+			for(int i=1;i<=this.inputValue;i++) {
 			
-			this.result = this.result * i;
-			
+				result = result * i;
+		
 			}
 		}
+		
+		return result;
 	}
 
-	public void showMessage(int x) {
+	public void showMessage(long result) {
 		
-		System.out.println("!" + x + " = " + this.result);
-		
-	}
-	
-	public void showError() {
-		
-		System.out.println("Incorrect value");
+		System.out.println("!" + this.inputValue + " = " + Long.toString(result));
 		
 	}
+		
 }
 	
