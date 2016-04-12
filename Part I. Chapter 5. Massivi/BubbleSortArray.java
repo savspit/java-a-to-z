@@ -8,11 +8,11 @@ public class BubbleSortArray {
 	
 		int[] values = bubbleSortArray.initializeArray();
 		
-		bubbleSortArray.showArrayBefore(values);
+		bubbleSortArray.showArray(values);
 		
 		bubbleSortArray.doBubbleSort(values);
 		
-		bubbleSortArray.showArrayAfter(values);
+		bubbleSortArray.showArray(values);
 	
 	}
 	
@@ -40,26 +40,13 @@ public class BubbleSortArray {
 	
 	public int[] initializeArray() {
 		
-		int[] values = new int[10];
-		
-		values[0] = 9;
-		values[1] = 6;
-		values[2] = 5;
-		values[3] = 10;
-		values[4] = 7;
-		values[5] = 3;
-		values[6] = 8;
-		values[7] = 2;
-		values[8] = 1;
-		values[9] = 4;
+		int[] values = new int[] {9, 6, 5, 10, 7, 3, 8, 2, 1, 4};
 		
 		return values;
 		
 	}
 	
-	public void showArrayBefore(int[] values) {
-		
-		System.out.println("Before");
+	public void showArray(int[] values) {
 		
 		for (int value : values) {
 			
@@ -67,17 +54,7 @@ public class BubbleSortArray {
 			
 		}
 		
-	}
-	
-	public void showArrayAfter(int[] values) {
-		
-		System.out.println("After");
-		
-		for (int value : values) {
-			
-			System.out.println(value);
-			
-		}
+		System.out.println("");
 		
 	}
 	

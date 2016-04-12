@@ -24,27 +24,7 @@ public class CubeFunction {
 		
 		CubeFunction cubefunction = new CubeFunction(5,6,10,Integer.parseInt(args[0]),Integer.parseInt(args[1]));
 		
-		if (cubefunction.validParameters(args)) {
-		
-			cubefunction.calculate();
-			
-		}
-		
-	}
-	
-	public boolean validParameters(String[] args) {
-		
-		if (args.length != 2) {
-			
-			showMessage("Input 2 parameters");
-			
-			return false;
-			
-		} else {
-			
-			return true;
-			
-		}
+		cubefunction.calculate();
 		
 	}
 	
@@ -52,31 +32,17 @@ public class CubeFunction {
 	
 		float result = 0;
 	
-		if (this.x1 < this.x2) {
-	
-			for(int x=this.x1;x<=this.x2;x++) {
+		for(int x=this.x1;x<=this.x2;x++) {
 						
-				result = (float)(this.a * Math.pow(x,2) + this.b * x + this.c);
-	
-				showMessage(Float.toString(result));
+			showMessage((float)(this.a * Math.pow(x,2) + this.b * x + this.c));
 					
-			} 
-		} else {
-	
-				for(int x=this.x1;x>=this.x2;x--) {
-						
-					result = (float)(this.a * Math.pow(x,2) + this.b * x + this.c);
-	
-					showMessage(Float.toString(result));
-						
-				}
 		}	
 	
 	}
 	
-	public void showMessage(String message) {
+	public void showMessage(float result) {
 		
-		System.out.println(message);
+		System.out.println(Float.toString(result));
 		
 	}
 	

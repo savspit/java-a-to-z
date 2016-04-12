@@ -2,17 +2,27 @@ package shestakov;
 
 public class SquareArray {
 	
+	int size;
+	
+	public SquareArray(int value) {
+		
+		this.size = value;
+		
+	}
+	
 	public static void main(String[] args) {
 		
-		SquareArray squareArray = new SquareArray();
+		int size = 5;
 		
+		SquareArray squareArray = new SquareArray(size);
+
 		int[][] values = squareArray.initializeArray();
 		
-		squareArray.showArrayBefore(values);
+		squareArray.showArray(values);
 		
 		int[][] rotatedArray = squareArray.rotateArray(values);
 		
-		squareArray.showArrayAfter(rotatedArray);
+		squareArray.showArray(rotatedArray);
 		
 	}
 	
@@ -21,11 +31,11 @@ public class SquareArray {
 		int a = 0;
 		int b = 0;
 		
-		int[][] rotatedArray = new int[5][5];
+		int[][] rotatedArray = new int[this.size][this.size];
 		
-		for (int y=0;y<=values.length-1;y++) {
+		for (int y=0;y<=this.size-1;y++) {
 			
-			for (int x=values.length-1;x>=0;x--) {
+			for (int x=this.size-1;x>=0;x--) {
 			
 				rotatedArray[a][b] = values[x][y];
 			
@@ -47,11 +57,11 @@ public class SquareArray {
 		
 		int temp = 0;
 		
-		int[][] values = new int[5][5];
+		int[][] values = new int[this.size][this.size];
 
-		for (int x=0;x<values.length;x++) {
+		for (int x=0;x<this.size;x++) {
 			
-			for (int y=0;y<values.length;y++) {
+			for (int y=0;y<this.size;y++) {
 			
 				values[x][y] = temp;
 				
@@ -65,9 +75,7 @@ public class SquareArray {
 		
 	}
 	
-	public void showArrayBefore(int[][] values) {
-		
-		System.out.println("Before");
+	public void showArray(int[][] values) {
 		
 		String str = "";
 		
@@ -87,30 +95,8 @@ public class SquareArray {
 			
 		}	
 		
-	}
-	
-	public void showArrayAfter(int[][] values) {
-		
-		System.out.println("After");
-		
-		String str = "";
-		
-		for (int x=0;x<values.length;x++) {
-			
-			str = "";
-			
-			System.out.println(str);
-			
-			for (int y=0;y<values.length;y++) {
-			
-				str = str + values[x][y] + " ";
-				
-			}
-			
-			System.out.println(str);
-			
-		}	
+		System.out.println("");
 		
 	}
-	
+		
 }

@@ -8,75 +8,47 @@ public class ArrayWithDuplicates {
 		
 		String[] values = arrayWithDuplicates.initializeArray();
 		
-		arrayWithDuplicates.showArrayBefore(values);
+		arrayWithDuplicates.showArray(values);
 		
-		String[] correctArray = arrayWithDuplicates.removeDuplicates(values);
+		arrayWithDuplicates.removeDuplicates(values);
 		
-		arrayWithDuplicates.showArrayAfter(correctArray);
+		arrayWithDuplicates.showArray(values);
 		
 	}
 	
-	public String[] removeDuplicates(String[] values) {
+	public void removeDuplicates(String[] values) {
 		
-		boolean duplicate = false;
-		int n = 0;
-		
-		String[] correctValues = new String[values.length];
-		
-		for (String value: values) {
+		for (int x=0; x<values.length; x++) {
 			
-			for (String correctValue: correctValues) {
+			for (int y=0; y<values.length; y++) {
 				
-				if (value == correctValue) {
+				if (values[x]==values[y] && x!=y) {
 					
-					duplicate = true;
+					for (int z=y; z<values.length-1; z++) {
+						
+						values[z] = values[z+1];
+						
+					}
 					
-					break;
+					values[values.length-1] = null;
 					
 				}
-			
-			}
-			
-			if (duplicate == false) {
-				
-				correctValues[n] = value;
-				
-				n++;
-				
-			} else {
-				
-				duplicate = false;
 				
 			}
 			
 		}
-		
-		return correctValues;
 		
 	}
 	
 	public String[] initializeArray() {
 		
-		String[] values = new String[10];
-		
-		values[0] = "apple";
-		values[1] = "banana";
-		values[2] = "pineapple";
-		values[3] = "tomato";
-		values[4] = "tomato";
-		values[5] = "apple";
-		values[6] = "peach";
-		values[7] = "potato";
-		values[8] = "strawberry";
-		values[9] = "blueberry";
+		String[] values = new String[] {"apple","banana","pineapple","tomato","tomato","apple","peach","potato","strawberry","blueberry"};
 		
 		return values;
 		
 	}
 	
-	public void showArrayBefore(String[] values) {
-		
-		System.out.println("*Before");
+	public void showArray(String[] values) {
 		
 		for (String value : values) {
 			
@@ -84,18 +56,7 @@ public class ArrayWithDuplicates {
 			
 		}
 		
-	}
-	
-	public void showArrayAfter(String[] values) {
-		
-		System.out.println("*After");
-		
-		for (String value : values) {
-			
-			System.out.println(value);
-			
-		}
-		
+		System.out.println("");
 	}
 	
 }
