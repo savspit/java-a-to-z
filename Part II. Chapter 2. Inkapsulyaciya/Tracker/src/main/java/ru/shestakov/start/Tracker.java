@@ -66,51 +66,6 @@ public class Tracker {
         return (Task) filter.checkIn(this.items);
     }
 
-    /*public Item findBy(long create) {
-        Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getDescription().equals(create)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
-    }*/
-
-    /*
-    public Item findByName(String name) {
-        Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getName().equals(name)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public Item findByDesc(String desc) {
-        Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getDescription().equals(desc)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public Item findByCreate(long create) {
-        Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getDescription().equals(create)) {
-                result = item;
-                break;
-            }
-        }
-        return result;
-    }*/
-
     String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
