@@ -9,6 +9,6 @@ public class FilterByCreate implements Filter {
     }
 
     public boolean check(Item item) {
-        if (item != null) { return new Long(item.getCreate()).equals(create); } else { return false; }
+        return (item != null) && (new Long(item.getCreate()).equals(create));
     }
 }

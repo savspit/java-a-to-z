@@ -9,6 +9,6 @@ public class FilterByDescription implements Filter {
     }
 
     public boolean check(Item item) {
-        if (item != null) { return item.getDescription().contains(desc); } else { return false; }
+        return (item != null) && (item.getDescription().contains(desc));
     }
 }

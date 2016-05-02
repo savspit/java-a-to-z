@@ -9,7 +9,7 @@ public class FilterByName implements Filter {
     }
 
     public boolean check(Item item) {
-        if (item != null) { return item.getName().contains(name); } else { return false; }
+        return (item != null) && (item.getName().contains(name));
     }
 
 }
