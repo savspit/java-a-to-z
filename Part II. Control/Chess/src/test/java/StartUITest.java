@@ -28,12 +28,10 @@ public class StartUITest {
 
         // test Figure use Cell2
         Assert.assertEquals(figure.getCell(), cell2);
-        Assert.assertEquals(figure.getCell(), cell2);
 
         // test Figure Not use Cell1
         Assert.assertNotEquals(figure.getCell(), cell1);
-        Assert.assertNotEquals(figure.getCell(), cell1);
-
+        
     }
 
 }
