@@ -10,6 +10,16 @@ public class InteractCalc{
         return scanner.nextLine();
     }
 
+    public double ask(String question, boolean check) {
+        System.out.print(question);
+        try {
+            return Long.parseLong(scanner.nextLine());
+        } catch (NumberFormatException nfe) {
+            System.out.println("Incorrect value. Please, enter again.");
+        }
+        return -1;
+    }
+
     public int ask(String question, int[] range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;

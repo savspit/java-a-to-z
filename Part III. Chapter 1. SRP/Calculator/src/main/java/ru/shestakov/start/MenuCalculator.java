@@ -8,7 +8,6 @@ public class MenuCalculator {
     private Calculator calculator;
     private BaseAction[] actions = new BaseAction[10];
     private int position = 0;
-    private double tempMemory = 0;
 
     public MenuCalculator(InteractCalc interactCalc, Calculator calculator) {
         this.interactCalc = interactCalc;
@@ -58,9 +57,9 @@ public class MenuCalculator {
         }
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
-            String value = interactCalc.ask("Please, enter the number: ");
+            double value = interactCalc.ask("Please, enter the number: ", true);
 
-            calculator.addTheNumber(Double.parseDouble(value));
+            calculator.addTheNumber(value);
         }
 
     }
@@ -76,9 +75,9 @@ public class MenuCalculator {
         }
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
-            String value = interactCalc.ask("Please, enter the number: ");
+            double value = interactCalc.ask("Please, enter the number: ", true);
 
-            calculator.addiction(Double.parseDouble(value));
+            calculator.addiction(value);
         }
 
     }
@@ -94,9 +93,9 @@ public class MenuCalculator {
         }
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
-            String value = interactCalc.ask("Please, enter the number: ");
+            double value = interactCalc.ask("Please, enter the number: ", true);
 
-            calculator.substraction(Double.parseDouble(value));
+            calculator.substraction(value);
         }
 
     }
@@ -112,9 +111,9 @@ public class MenuCalculator {
         }
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
-            String value = interactCalc.ask("Please, enter the number: ");
+            double value = interactCalc.ask("Please, enter the number: ", true);
 
-            calculator.multiplication(Double.parseDouble(value));
+            calculator.multiplication(value);
         }
 
     }
@@ -130,9 +129,9 @@ public class MenuCalculator {
         }
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
-            String value = interactCalc.ask("Please, enter the number: ");
+            double value = interactCalc.ask("Please, enter the number: ", true);
 
-            calculator.division(Double.parseDouble(value));
+            calculator.division(value);
         }
 
     }
