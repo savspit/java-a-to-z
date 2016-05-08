@@ -16,9 +16,9 @@ public class StartUI {
 
         chessboard.fill();
 
-        Cell cell = new Cell();
+        chessboard.go("d", 2, "h", 4);
 
-        chessboard.update(cell);
+        chessboard.show();
 
     }
 
