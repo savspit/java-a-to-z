@@ -42,8 +42,6 @@ public class ControlQuality {
                     if(reproductStorages[x].getTemperature() < 0) {
                         reproductStorages[x].addFood(food);
                         break;
-                    } else {
-                        System.out.println("There is no storage with low temperature");
                     }
                 }
             } else {
