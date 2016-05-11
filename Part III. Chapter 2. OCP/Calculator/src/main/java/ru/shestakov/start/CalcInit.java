@@ -22,7 +22,9 @@ public class CalcInit {
 
     public void init(Calculator calculator) {
 
+        //MenuCalculator menu = new MenuCalculator(this.interactCalc, calculator);
         MenuCalculator menu = new MenuEngineerCalculator(this.interactCalc, calculator);
+
         menu.fillActions();
 
         int[] ranges = menu.getRanges();
