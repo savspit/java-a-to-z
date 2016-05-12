@@ -12,7 +12,6 @@ public class CalcInit {
         Calculator calculator = new Calculator();
         InteractCalc interactCalc = new InteractCalc();
         new CalcInit(interactCalc).init(calculator);
-
     }
 
     public void init(Calculator calculator) {
