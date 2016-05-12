@@ -32,7 +32,6 @@ public class MenuEngineerCalculator extends MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.sinus(value);
         }
 
@@ -50,7 +49,6 @@ public class MenuEngineerCalculator extends MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.cosinus(value);
         }
 
@@ -68,7 +66,6 @@ public class MenuEngineerCalculator extends MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.tangens(value);
         }
 

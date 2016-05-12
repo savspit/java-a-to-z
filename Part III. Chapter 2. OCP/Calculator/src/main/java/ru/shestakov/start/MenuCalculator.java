@@ -66,7 +66,6 @@ public class MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.addTheNumber(value);
         }
 
@@ -84,7 +83,6 @@ public class MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.addiction(value);
         }
 
@@ -102,7 +100,6 @@ public class MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.substraction(value);
         }
 
@@ -120,7 +117,6 @@ public class MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.multiplication(value);
         }
 
@@ -138,7 +134,6 @@ public class MenuCalculator {
 
         public void execute(InteractCalc interactCalc, Calculator calculator) {
             double value = interactCalc.ask("Please, enter the number: ", true);
-
             calculator.division(value);
         }
 

@@ -5,17 +5,12 @@ public class CalcInit {
     private InteractCalc interactCalc;
 
     public CalcInit(InteractCalc interactCalc) {
-
         this.interactCalc = interactCalc;
-
     }
 
     public static void main (String[] args) {
-
         Calculator calculator = new Calculator();
-
         InteractCalc interactCalc = new InteractCalc();
-
         new CalcInit(interactCalc).init(calculator);
 
     }
