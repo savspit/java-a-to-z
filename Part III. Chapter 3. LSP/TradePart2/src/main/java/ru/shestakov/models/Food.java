@@ -14,14 +14,6 @@ public abstract class Food {
         this.createDate = System.nanoTime();
     }
 
-    public long getExpaireDate() {
-        return this.expaireDate;
-    }
-
-    public long getCreateDate() {
-        return this.createDate;
-    }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -30,5 +22,15 @@ public abstract class Food {
         this.discount = discount;
     }
 
+    public int getExpaireTimeInPercents() {
+        long expaireDate = this.expaireDate;
+        long createDate = this.createDate;
+        long currentDate = System.nanoTime();
+
+        long expaireTime = expaireDate - createDate;
+        long expaireTimeGone = currentDate - createDate;
+
+        return (int) (long) (100 * expaireTimeGone / expaireTime);
+    }
 
 }

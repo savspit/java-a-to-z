@@ -4,20 +4,13 @@ public class StartUI {
 
     public static void main(String[] args) {
 
-        //Trade trade = new Trade();
-        TradeWithReproduct trade = new TradeWithReproduct();
+        Trade trade = new Trade();
 
-        new StartUI().initWithReproduct(trade);
+        new StartUI().init(trade);
 
     }
 
     public void init(Trade trade) {
-
-
-
-    }
-
-    public void initWithReproduct(TradeWithReproduct trade) {
 
 
 
