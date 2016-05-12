@@ -12,12 +12,13 @@ public class InteractCalc{
 
     public double ask(String question, boolean check) {
         System.out.print(question);
-        try {
-            return Long.parseLong(scanner.nextLine());
-        } catch (NumberFormatException nfe) {
-            System.out.println("Incorrect value. Please, enter again.");
+        while (true) {
+            try {
+                return Long.parseLong(scanner.nextLine());
+            } catch (NumberFormatException nfe) {
+                System.out.print("Incorrect value. " + question);
+            }
         }
-        return -1;
     }
 
     public int ask(String question, int[] range) {
