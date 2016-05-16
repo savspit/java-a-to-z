@@ -1,9 +1,7 @@
 package ru.shestakov.models;
 
-public class UserValid {
+public abstract class UserValid {
 
-    public boolean check(User user) {
-        return true;
-    }
+    public boolean check(User user) { return false; }
 
 }
