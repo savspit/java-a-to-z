@@ -23,11 +23,15 @@ public class MenuElement implements Element {
         return this.parentId;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
 
-    public void print() {
-        System.out.println(this.id + " " + this.parentId + " " + this.name);
+    public void print(String indent) {
+        System.out.println(indent + this.id+"/"+this.parentId+"/"+this.name);
     }
 }

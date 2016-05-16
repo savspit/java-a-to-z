@@ -6,10 +6,11 @@ public class Menu {
 
     public MenuElement[] menuElements = new MenuElement[20];
     public long counter = 1;
+    public String indent = "";
 
     public void add(MenuElement menuElement) {
-        for(int x=0; x<menuElements.length; x++) {
-            if(menuElements[x] == null) {
+        for (int x = 0; x < menuElements.length; x++) {
+            if (menuElements[x] == null) {
                 menuElement.setId(counter++);
                 menuElements[x] = menuElement;
                 break;
@@ -18,19 +19,29 @@ public class Menu {
     }
 
     public void print() {
-        for(int x=0; x<menuElements.length; x++) {
-            if(menuElements[x] != null && menuElements[x].getParentId() == 0) {
-                menuElements[x].print();
-                print(menuElements[x].getId());
+        for (int x = 0; x < menuElements.length; x++) {
+            if (menuElements[x] != null && menuElements[x].getParentId() == 0) {
+                menuElements[x].print(this.indent);
+                print(menuElements[x].getId(),0);
             }
         }
     }
 
-    public void print(long parentId) {
-        for(int x=0; x<menuElements.length; x++) {
-            if(menuElements[x] != null && menuElements[x].getParentId() == parentId) {
-                menuElements[x].print();
+    public void print(long parentId, int level) {
+        level++;
+        for (int x = 0; x < menuElements.length; x++) {
+            if (menuElements[x] != null && menuElements[x].getParentId() == parentId) {
+                menuElements[x].print(this.indent + addSpaces(level*4));
+                print(menuElements[x].getId(), level);
             }
         }
+    }
+
+    public String addSpaces(int length) {
+        StringBuffer outputBuffer = new StringBuffer(length);
+        for(int i=0; i<length; i++){
+            outputBuffer.append(" ");
+        }
+        return outputBuffer.toString();
     }
 }

@@ -30,10 +30,25 @@ public class StartUI {
 
         MenuElement menuElementAccounts = new MenuElement("Accounts", menuElementEdit.getId());
         menu.add(menuElementAccounts);
-        MenuElement menuElementContscts = new MenuElement("Contscts", menuElementEdit.getId());
-        menu.add(menuElementContscts);
+        MenuElement menuElementContacts = new MenuElement("Contacts", menuElementEdit.getId());
+        menu.add(menuElementContacts);
         MenuElement menuElementUsers = new MenuElement("Users", menuElementEdit.getId());
         menu.add(menuElementUsers);
+
+        MenuElement menuElementSearch = new MenuElement("Search", menuElementTools.getId());
+        menu.add(menuElementSearch);
+        MenuElement menuElementInfo = new MenuElement("Info", menuElementTools.getId());
+        menu.add(menuElementInfo);
+        MenuElement menuElementOptions = new MenuElement("Options", menuElementTools.getId());
+        menu.add(menuElementOptions);
+        MenuElement menuElementConvert = new MenuElement("Convert", menuElementOptions.getId());
+        menu.add(menuElementConvert);
+        MenuElement menuElementConvert1 = new MenuElement("Convert1", menuElementConvert.getId());
+        menu.add(menuElementConvert1);
+        MenuElement menuElementConvert2 = new MenuElement("Convert2", menuElementConvert.getId());
+        menu.add(menuElementConvert2);
+        MenuElement menuElementCompact = new MenuElement("Compact", menuElementOptions.getId());
+        menu.add(menuElementCompact);
 
         MenuElement menuElementAbout = new MenuElement("About", menuElementHelp.getId());
         menu.add(menuElementAbout);
