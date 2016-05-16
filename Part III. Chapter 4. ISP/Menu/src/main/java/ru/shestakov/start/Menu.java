@@ -6,8 +6,7 @@ public class Menu {
 
     public MenuElement[] menuElements = new MenuElement[20];
     public long counter = 1;
-    public String indent = "";
-
+    
     public void add(MenuElement menuElement) {
         for (int x = 0; x < menuElements.length; x++) {
             if (menuElements[x] == null) {
@@ -21,7 +20,7 @@ public class Menu {
     public void print() {
         for (int x = 0; x < menuElements.length; x++) {
             if (menuElements[x] != null && menuElements[x].getParentId() == 0) {
-                menuElements[x].print(this.indent);
+                menuElements[x].print("");
                 print(menuElements[x].getId(),0);
             }
         }
@@ -31,7 +30,7 @@ public class Menu {
         level++;
         for (int x = 0; x < menuElements.length; x++) {
             if (menuElements[x] != null && menuElements[x].getParentId() == parentId) {
-                menuElements[x].print(this.indent + addSpaces(level*4));
+                menuElements[x].print(addSpaces(level*4));
                 print(menuElements[x].getId(), level);
             }
         }
