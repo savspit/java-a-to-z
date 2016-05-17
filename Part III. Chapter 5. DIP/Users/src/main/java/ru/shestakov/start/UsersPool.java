@@ -6,17 +6,18 @@ public class UsersPool {
 
     private User[] storage = new User[100];
 
-    public void add(User user) {
+    public void add(User user, UserValid userValid) {
 
-        UserValid userPreValid = new UserPreValid();
-
-        for(int x=0; x< this.storage.length; x++) {
-            if(this.storage[x] != null && userPreValid.check(user)) {
-                this.storage[x] = user;
-                break;
+        if (userValid.passed(user)) {
+            for (int x = 0; x < this.storage.length; x++) {
+                if (this.storage[x] != null) {
+                    this.storage[x] = user;
+                    break;
+                }
             }
         }
-
     }
+
+
 
 }

@@ -11,14 +11,16 @@ public class StartUI {
 
     public void init(UsersPool usersPool) {
 
+        UserPreValid userPreValid = new UserPreValid();
+
         User user1 = new User("John");
-        usersPool.add(user1);
+        usersPool.add(user1, userPreValid);
 
         User user2 = new User("Mike");
-        usersPool.add(user2);
+        usersPool.add(user2, userPreValid);
 
         User user3 = new User("Alice");
-        usersPool.add(user3);
+        usersPool.add(user3, userPreValid);
 
     }
 
