@@ -2,7 +2,7 @@ package ru.shestakov.models;
 
 public class User {
 
-    public int id;
+    private int id;
     public String name;
 
     public User(String name) {
