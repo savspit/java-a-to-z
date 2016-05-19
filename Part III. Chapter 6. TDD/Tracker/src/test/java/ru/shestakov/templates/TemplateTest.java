@@ -1,18 +1,24 @@
 package ru.shestakov.templates;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class TemplateTest {
 
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
     @Test
-    public void whenTakeTestWithDataShouldReplaceParamsToData() {
+    public void whenTakeTestWithDataShouldReplaceParamsToData() throws SimpleGeneratorException {
 
         // assign
         SimpleGenerator template = new SimpleGenerator();
@@ -29,74 +35,58 @@ public class TemplateTest {
     }
 
     @Test
-    public void whenTakeTestWithNoKeysInDataShouldReturnError() {
+    public void whenTakeTestWithNoKeysInDataShouldReturnError() throws SimpleGeneratorException {
 
-        // assign
         SimpleGenerator template = new SimpleGenerator();
         String text = "Hello, ${name}. Hello, ${name}.";
         Map<String,String> data = new HashMap<String, String>();
 
-        // act
+        exception.expect(SimpleGeneratorException.class);
+        exception.expectMessage("No keys in data");
+
         String result = template.generate(text, data);
-
-        // action
-        String checked = "e001";
-        Assert.assertThat(result, is(checked));
-
     }
 
     @Test
-    public void whenTakeTestWithNoKeysInTextShouldReturnError() {
+    public void whenTakeTestWithNoKeysInTextShouldReturnError() throws SimpleGeneratorException {
 
-        // assign
         SimpleGenerator template = new SimpleGenerator();
         String text = "Hello!.";
         Map<String,String> data = new HashMap<String, String>();
-        data.put("namet", "Petr");
+        data.put("name", "Petr");
 
-        // act
+        exception.expect(SimpleGeneratorException.class);
+        exception.expectMessage("No keys in text");
+
         String result = template.generate(text, data);
-
-        // action
-        String checked = "e002";
-        Assert.assertThat(result, is(checked));
-
     }
 
     @Test
-    public void whenTakeTestWithKeysInDataLessKeysInTextShouldReturnError() {
+    public void whenTakeTestWithKeysInDataLessKeysInTextShouldReturnError() throws SimpleGeneratorException {
 
-        // assign
         SimpleGenerator template = new SimpleGenerator();
         String text = "Hello, ${name}, ${surname}.";
         Map<String,String> data = new HashMap<String, String>();
         data.put("name", "Petr");
 
-        // act
+        exception.expect(SimpleGeneratorException.class);
+        exception.expectMessage("Keys in data less keys in text");
+
         String result = template.generate(text, data);
-
-        // action
-        String checked = "e003";
-        Assert.assertThat(result, is(checked));
-
     }
 
     @Test
-    public void whenTakeTestWithKeysInTextLessKeysInDataShouldReturnError() {
+    public void whenTakeTestWithKeysInTextLessKeysInDataShouldReturnError() throws SimpleGeneratorException {
 
-        // assign
         SimpleGenerator template = new SimpleGenerator();
         String text = "Hello, ${name}.";
         Map<String,String> data = new HashMap<String, String>();
         data.put("name", "Petr");
         data.put("surname", "Parsentev");
 
-        // act
+        exception.expect(SimpleGeneratorException.class);
+        exception.expectMessage("Keys in text less keys in data");
+
         String result = template.generate(text, data);
-
-        // action
-        String checked = "e004";
-        Assert.assertThat(result, is(checked));
-
     }
 }
