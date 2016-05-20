@@ -3,7 +3,6 @@ package ru.shestakov.templates;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
 
 public class SimpleGenerator implements Template{
 
