@@ -28,7 +28,7 @@ public class SimpleGenerator implements Template{
                 }
                 m.appendReplacement(sb, value);
             } catch (NullPointerException npe) {
-                throw npe;
+                throw new SimpleGeneratorException("NullPointerException", npe);
             }
             found = true;
             counter++;
@@ -43,36 +43,6 @@ public class SimpleGenerator implements Template{
         m.appendTail(sb);
 
         return sb.toString();
-    }
-
-    public boolean isKeysInDataLessKeysInText(String template, Map<String,String> data) {
-
-        Pattern p = Pattern.compile("\\$\\{(\\w+)\\}");
-        Matcher m = p.matcher(template);
-
-        StringBuffer sb = new StringBuffer();
-
-        int counter = 0;
-        while (m.find()) {
-            counter++;
-        }
-
-        return counter > data.size();
-    }
-
-    public boolean isKeysInTextLessKeysInData(String template, Map<String,String> data) {
-
-        Pattern p = Pattern.compile("\\$\\{(\\w+)\\}");
-        Matcher m = p.matcher(template);
-
-        StringBuffer sb = new StringBuffer();
-
-        int counter = 0;
-        while (m.find()) {
-            counter++;
-        }
-
-        return counter < data.size();
     }
 }
 
