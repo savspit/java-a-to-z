@@ -3,6 +3,7 @@ package ru.shestakov.templates;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class SimpleGenerator implements Template{
 
@@ -13,24 +14,30 @@ public class SimpleGenerator implements Template{
 
         StringBuffer sb = new StringBuffer();
 
-        if (!m.find()) {
-            throw new SimpleGeneratorException("No keys in text", new NullPointerException());
-        } else if (isKeysInTextLessKeysInData(template, data)) {
-            throw new SimpleGeneratorException("Keys in text less keys in data", new NullPointerException());
-        } else { m.reset(); }
+        if (data.size() == 0) {
+            throw new SimpleGeneratorException("No keys in data");
+        }
 
+        boolean found = false;
+        int counter = 0;
         while (m.find()) {
             try {
-                m.appendReplacement(sb, data.get(m.group(1)));
-            } catch (NullPointerException npe) {
-                if(data.size()==0) {
-                    throw new SimpleGeneratorException("No keys in data", npe);
-                } else if (isKeysInDataLessKeysInText(template, data)) {
-                    throw new SimpleGeneratorException("Keys in data less keys in text", npe);
-                } else {
-                    throw npe;
+                String value = data.get(m.group(1));
+                if(value == null) {
+                    throw new SimpleGeneratorException("Keys in data less keys in text");
                 }
+                m.appendReplacement(sb, value);
+            } catch (NullPointerException npe) {
+                throw npe;
             }
+            found = true;
+            counter++;
+        }
+        if (!found) {
+            throw new SimpleGeneratorException("No keys in text");
+        }
+        if (counter != data.size()) {
+            throw new SimpleGeneratorException("Keys in text less keys in data");
         }
 
         m.appendTail(sb);
