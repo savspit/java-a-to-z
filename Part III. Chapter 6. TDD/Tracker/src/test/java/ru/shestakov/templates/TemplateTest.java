@@ -35,33 +35,6 @@ public class TemplateTest {
     }
 
     @Test
-    public void whenTakeTestWithNoKeysInDataShouldReturnError() throws SimpleGeneratorException {
-
-        SimpleGenerator template = new SimpleGenerator();
-        String text = "Hello, ${name}. Hello, ${name}.";
-        Map<String,String> data = new HashMap<String, String>();
-
-        exception.expect(SimpleGeneratorException.class);
-        exception.expectMessage("No keys in data");
-
-        String result = template.generate(text, data);
-    }
-
-    @Test
-    public void whenTakeTestWithNoKeysInTextShouldReturnError() throws SimpleGeneratorException {
-
-        SimpleGenerator template = new SimpleGenerator();
-        String text = "Hello!.";
-        Map<String,String> data = new HashMap<String, String>();
-        data.put("name", "Petr");
-
-        exception.expect(SimpleGeneratorException.class);
-        exception.expectMessage("No keys in text");
-
-        String result = template.generate(text, data);
-    }
-
-    @Test
     public void whenTakeTestWithKeysInDataLessKeysInTextShouldReturnError() throws SimpleGeneratorException {
 
         SimpleGenerator template = new SimpleGenerator();
