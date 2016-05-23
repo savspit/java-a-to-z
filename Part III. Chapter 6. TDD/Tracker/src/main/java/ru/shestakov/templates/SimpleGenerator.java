@@ -10,21 +10,23 @@ public class SimpleGenerator implements Template{
 
     public String generate(String template, Map<String,String> data) throws SimpleGeneratorException {
 
-        Matcher m = P.matcher(template);
+        StringBuilder sb = new StringBuilder(template);
+        Matcher m = P.matcher(sb);
 
         int counter = 0;
         while (m.find()) {
 
             String value = data.get(m.group(1));
             if(value == null) { throw new SimpleGeneratorException("Keys in data less keys in text"); }
-            template = m.replaceFirst(value);
+            sb.replace(m.start(), m.end(), value);
+            m.reset();
 
             counter++;
         }
 
         if (counter != data.size()) { throw new SimpleGeneratorException("Keys in text less keys in data"); }
 
-        return template;
+        return sb.toString();
     }
 }
 

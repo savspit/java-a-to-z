@@ -22,10 +22,11 @@ public class TemplateTest {
 
         // assign
         SimpleGenerator template = new SimpleGenerator();
-        String text = "Hello, ${name}.";
+        String text = "Hello, ${name} ${surname}.";
         Map<String,String> data = new HashMap<String, String>();
         data.put("name", "Petr");
-        String checked = "Hello, Petr.";
+        data.put("surname", "Parsentev");
+        String checked = "Hello, Petr Parsentev.";
 
         // act
         String result = template.generate(text, data);
