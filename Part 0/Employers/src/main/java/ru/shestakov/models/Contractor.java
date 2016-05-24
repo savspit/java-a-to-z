@@ -4,10 +4,9 @@ public class Contractor extends Stuff {
 
     public Contractor(String firstName, String lastName, long payRate, String agencyName) {
         super(firstName, lastName, payRate, agencyName);
-    }
-
-    public Contractor() {
-        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.payRate = payRate;
     }
 
     @Override

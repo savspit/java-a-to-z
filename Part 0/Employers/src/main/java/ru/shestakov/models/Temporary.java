@@ -4,10 +4,10 @@ public class Temporary extends Stuff {
 
     public Temporary(String firstName, String lastName, long payRate, String agencyName) {
         super(firstName, lastName, payRate, agencyName);
-    }
-
-    public Temporary() {
-        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.payRate = payRate;
+        this.agencyName = agencyName;
     }
 
     @Override

@@ -4,10 +4,10 @@ public class Employee extends Stuff {
 
     public Employee(String firstName, String lastName, long payRate, int yearlyVacation) {
         super(firstName, lastName, payRate, yearlyVacation);
-    }
-
-    public Employee() {
-        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.payRate = payRate;
+        this.yearlyVacation = yearlyVacation;
     }
 
     @Override

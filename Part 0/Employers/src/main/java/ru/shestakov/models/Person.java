@@ -9,9 +9,9 @@ public class Person {
     }
 
     public static void main(String args[]) {
-        Person person1 = new Person(new Employee());
-        Person person2 = new Person(new Contractor());
-        Person person3 = new Person(new Temporary());
+        Person person1 = new Person(new Employee("Name", "Surname", 100, 28));
+        Person person2 = new Person(new Contractor("Name", "Surname", 80, "Agency"));
+        Person person3 = new Person(new Temporary("Name", "Surname", 80, "Agency"));
 
         person1.test();
         person2.test();

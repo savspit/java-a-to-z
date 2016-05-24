@@ -8,8 +8,6 @@ public abstract class Stuff {
     int yearlyVacation;
     String agencyName;
 
-    public Stuff() {}
-
     public Stuff(String firstName, String lastName, long payRate, int yearlyVacation) {
         this.firstName = firstName;
         this.lastName = lastName;
