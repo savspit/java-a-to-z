@@ -8,18 +8,19 @@ public abstract class Stuff {
     int yearlyVacation;
     String agencyName;
 
-    public Stuff(String firstName, String lastName, long payRate, int yearlyVacation) {
+    public Stuff(String firstName, String lastName, long payRate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.payRate = payRate;
+    }
+
+    public Stuff(String firstName, String lastName, long payRate, int yearlyVacation) {
+        this(firstName, lastName, payRate);
         this.yearlyVacation = yearlyVacation;
     }
 
     public Stuff(String firstName, String lastName, long payRate, String agencyName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.payRate = payRate;
-        this.yearlyVacation = 0;
+        this(firstName, lastName, payRate);
         this.agencyName = agencyName;
     }
 
