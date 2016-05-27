@@ -89,10 +89,14 @@ public class GameBoard {
         }
     }
 
-    public boolean isGameOver() {
-        boolean result = boardIsFull() || playerIsWin();
+    public boolean isNextStep() {
+        boolean result = isGameOver();
         changeChipsActivity();
         return result;
+    }
+
+    public boolean isGameOver() {
+        return boardIsFull() || playerIsWin();
     }
 
     public boolean boardIsFull() {

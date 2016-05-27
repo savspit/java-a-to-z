@@ -21,7 +21,7 @@ public class StartUI {
             } else {
                 gameBoard.move(this.input.ask("your move:"));
             }
-        } while(!gameBoard.isGameOver());
+        } while(!gameBoard.isNextStep());
 
         System.out.println("Game over");
 
