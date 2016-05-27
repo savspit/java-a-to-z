@@ -15,11 +15,6 @@ public class GameBoard {
         this.field = new Chip[boardSize][boardSize];
     }
 
-    public void initialize() {
-        this.chips[0] = new Chip("X", true);
-        this.chips[1] = new Chip("O");
-    }
-
     public Chip getChipByValue(String value) {
         Chip result = null;
         for(int i = 0; i < this.chips.length; i++) {
@@ -29,14 +24,6 @@ public class GameBoard {
             }
         }
         return result;
-    }
-
-    public void changeChipsActivity() {
-        for(int i = 0; i < this.chips.length; i++) {
-            if(this.chips[i] != null) {
-                this.chips[i].setActive(!this.chips[i].getActive());
-            }
-        }
     }
 
     public Chip getActiveChip() {
@@ -61,6 +48,16 @@ public class GameBoard {
         return result;
     }
 
+    public String getFreeCell() {
+        int x = (int) (Math.random() * (this.BOARD_SIZE));
+        int y = (int) (Math.random() * (this.BOARD_SIZE));
+        while (field[x][y] != null) {
+            x = (int) (Math.random() * (this.BOARD_SIZE));
+            y = (int) (Math.random() * (this.BOARD_SIZE));
+        }
+        return String.valueOf(x) + String.valueOf(y);
+    }
+
     public void setPlayer(Player player) {
         for(int i = 0; i < this.players.length; i++) {
             if(this.players[i] == null) {
@@ -70,14 +67,17 @@ public class GameBoard {
         }
     }
 
-    public String getFreeCell() {
-        int x = (int) (Math.random() * (this.BOARD_SIZE));
-        int y = (int) (Math.random() * (this.BOARD_SIZE));
-        while (field[x][y] != null) {
-            x = (int) (Math.random() * (this.BOARD_SIZE));
-            y = (int) (Math.random() * (this.BOARD_SIZE));
+    public void changeChipsActivity() {
+        for(int i = 0; i < this.chips.length; i++) {
+            if(this.chips[i] != null) {
+                this.chips[i].setActive(!this.chips[i].getActive());
+            }
         }
-        return String.valueOf(x) + String.valueOf(y);
+    }
+    
+    public void initialize() {
+        this.chips[0] = new Chip("X", true);
+        this.chips[1] = new Chip("O");
     }
 
     public void print() {
