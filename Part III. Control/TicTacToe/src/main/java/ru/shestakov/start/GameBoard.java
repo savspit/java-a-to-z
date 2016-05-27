@@ -15,6 +15,10 @@ public class GameBoard {
         this.field = new Chip[boardSize][boardSize];
     }
 
+    public int getBoardSize() {
+        return this.boardSize;
+    }
+
     public Chip getChipByValue(String value) {
         Chip result = null;
         for(int i = 0; i < this.chips.length; i++) {

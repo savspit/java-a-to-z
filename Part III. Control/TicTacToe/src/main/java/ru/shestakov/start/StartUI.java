@@ -14,12 +14,13 @@ public class StartUI {
 
         showInfo();
 
+        int boardSize = gameBoard.getBoardSize();
         do {
             if(gameBoard.getNextPlayer().getIsBot()) {
                 gameBoard.move(gameBoard.getFreeCell());
                 gameBoard.print();
             } else {
-                gameBoard.move(this.input.ask("your move:"));
+                gameBoard.move(this.input.ask("your move:", boardSize));
             }
         } while(!gameBoard.isNextStep());
 
