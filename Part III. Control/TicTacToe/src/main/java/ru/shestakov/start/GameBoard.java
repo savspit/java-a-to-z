@@ -5,13 +5,13 @@ import ru.shestakov.models.Player;
 
 public class GameBoard {
 
-    private static int BOARD_SIZE;
+    private int boardSize;
     private Chip[][] field;
     private Player[] players = new Player[2];
     private Chip[] chips = new Chip[2];
 
     public GameBoard(int boardSize) {
-        this.BOARD_SIZE = boardSize;
+        this.boardSize = boardSize;
         this.field = new Chip[boardSize][boardSize];
     }
 
@@ -49,11 +49,11 @@ public class GameBoard {
     }
 
     public String getFreeCell() {
-        int x = (int) (Math.random() * (this.BOARD_SIZE));
-        int y = (int) (Math.random() * (this.BOARD_SIZE));
+        int x = (int) (Math.random() * (this.boardSize));
+        int y = (int) (Math.random() * (this.boardSize));
         while (field[x][y] != null) {
-            x = (int) (Math.random() * (this.BOARD_SIZE));
-            y = (int) (Math.random() * (this.BOARD_SIZE));
+            x = (int) (Math.random() * (this.boardSize));
+            y = (int) (Math.random() * (this.boardSize));
         }
         return String.valueOf(x) + String.valueOf(y);
     }
@@ -74,15 +74,15 @@ public class GameBoard {
             }
         }
     }
-    
+
     public void initialize() {
         this.chips[0] = new Chip("X", true);
         this.chips[1] = new Chip("O");
     }
 
     public void print() {
-        for (int i = 0; i < this.BOARD_SIZE; i++) {
-            for (int j = 0; j < this.BOARD_SIZE; j++) {
+        for (int i = 0; i < this.boardSize; i++) {
+            for (int j = 0; j < this.boardSize; j++) {
                 System.out.print((field[i][j] == null ? "°" : field[i][j].getValue()) + "\t");
             }
             System.out.println();
@@ -94,8 +94,8 @@ public class GameBoard {
     }
 
     public boolean boardIsFull() {
-        for (int i = 0; i < this.BOARD_SIZE; i++) {
-            for (int j = 0; j < this.BOARD_SIZE; j++) {
+        for (int i = 0; i < this.boardSize; i++) {
+            for (int j = 0; j < this.boardSize; j++) {
                 if (field[i][j] == null) {
                     return false;
                 };
@@ -110,28 +110,28 @@ public class GameBoard {
 
     public boolean winOnFieldColumn() {
         int count = 0;
-        for (int j = 0; j < this.BOARD_SIZE; j++) {
+        for (int j = 0; j < this.boardSize; j++) {
             count = 0;
-            for (int i = 0; i < this.BOARD_SIZE; i++) {
+            for (int i = 0; i < this.boardSize; i++) {
                 if (field[i][j] != null && field[i][j].equals(getActiveChip())) {
                     count++;
                 }
             }
-            if(count == this.BOARD_SIZE) { return true; }
+            if(count == this.boardSize) { return true; }
         }
         return false;
     }
 
     public boolean winOnFieldString() {
         int count = 0;
-        for (int i = 0; i < this.BOARD_SIZE; i++) {
+        for (int i = 0; i < this.boardSize; i++) {
             count = 0;
-            for (int j = 0; j < this.BOARD_SIZE; j++) {
+            for (int j = 0; j < this.boardSize; j++) {
                 if (field[i][j] != null && field[i][j].equals(getActiveChip())) {
                     count++;
                 }
             }
-            if(count == this.BOARD_SIZE) { return true; }
+            if(count == this.boardSize) { return true; }
         }
         return false;
     }
@@ -139,20 +139,20 @@ public class GameBoard {
     public boolean winOnFieldDiagonal() {
 
         int count = 0;
-        for (int i = 0; i < this.BOARD_SIZE; i++) {
+        for (int i = 0; i < this.boardSize; i++) {
             if (field[i][i] != null && field[i][i].equals(getActiveChip())) {
                 count++;
             }
         }
-        if(count == this.BOARD_SIZE) { return true; }
+        if(count == this.boardSize) { return true; }
 
         count = 0;
-        for (int i = 0, j = this.BOARD_SIZE-1; i < this.BOARD_SIZE; i++, j--) {
+        for (int i = 0, j = this.boardSize-1; i < this.boardSize; i++, j--) {
             if (field[i][j] != null && field[i][j].equals(getActiveChip())) {
                 count++;
             }
         }
-        if(count == this.BOARD_SIZE) { return true; } else { return false;}
+        if(count == this.boardSize) { return true; } else { return false;}
     }
 
     public void move(String cell) {
