@@ -21,7 +21,6 @@ public class StartUI {
             } else {
                 gameBoard.move(this.input.ask("your move:"));
             }
-            gameBoard.changeChipsActivity();
         } while(!gameBoard.isGameOver());
 
         System.out.println("Game over");

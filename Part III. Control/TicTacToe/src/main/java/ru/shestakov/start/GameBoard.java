@@ -90,7 +90,9 @@ public class GameBoard {
     }
 
     public boolean isGameOver() {
-        return boardIsFull() || playerIsWin();
+        boolean result = boardIsFull() || playerIsWin();
+        changeChipsActivity();
+        return result;
     }
 
     public boolean boardIsFull() {
