@@ -5,35 +5,35 @@ import java.util.*;
 public class IteratorFlatten implements Iterator {
 
     Iterator<Integer> ii;
-    Integer[] i;
-    int indexI = 0;
-    int index = 0;
+    ArrayList<Integer> i = new ArrayList<Integer>();
+    Iterator itr = null;
 
     public IteratorFlatten(Iterator<Iterator<Integer>> it) {
         convert(it);
+        itr = i.iterator();
     }
 
     public Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
 
         while(it.hasNext()) {
-            convertn(it.next());
+            convertNext(it.next());
         }
         return this.ii;
     }
 
-    public void convertn(Iterator<Integer> its) {
+    public void convertNext(Iterator<Integer> its) {
 
         while (its.hasNext()) {
-            i[indexI++] = its.next();
+            i.add(its.next());
         }
     }
 
     public boolean hasNext() {
-        return i.length > index;
+        return itr.hasNext();
     }
 
-    public Integer next() {
-        return i[index++];
+    public Object next() {
+        return itr.next();
     }
 
     public void remove() {
