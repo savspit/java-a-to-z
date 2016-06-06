@@ -18,7 +18,8 @@ public class IteratorFlattenTest {
         List<Integer> list2 = new ArrayList<>(Arrays.asList(5, 6, 7, 8));
         List<Iterator<Integer>> combined = new ArrayList<>(Arrays.asList(list1.iterator(), list2.iterator()));
 
-        IteratorFlatten ioi = new IteratorFlatten(combined.iterator());
+        IteratorFlatten ioi = new IteratorFlatten();
+        ioi.convert(combined.iterator());
         int[] expected = {1, 2, 3, 4, 5, 6, 7, 8};
         int[] actual = new int[8];
         int i = 0;

@@ -5,35 +5,26 @@ import java.util.*;
 public class IteratorFlatten implements Iterator {
 
     Iterator<Integer> ii;
-    ArrayList<Integer> i = new ArrayList<Integer>();
-    Iterator itr = null;
-
-    public IteratorFlatten(Iterator<Iterator<Integer>> it) {
-        convert(it);
-        itr = i.iterator();
-    }
+    Iterator<Iterator<Integer>> it;
+    Iterator<Integer> itInt;
 
     public Iterator<Integer> convert(Iterator<Iterator<Integer>> it) {
-
-        while(it.hasNext()) {
-            convertNext(it.next());
-        }
+        this.it = it;
         return this.ii;
     }
 
-    public void convertNext(Iterator<Integer> its) {
-
-        while (its.hasNext()) {
-            i.add(its.next());
-        }
-    }
-
     public boolean hasNext() {
-        return itr.hasNext();
+        if(itInt == null || !itInt.hasNext()) {
+            if(!it.hasNext() && !itInt.hasNext()) {
+                return false;
+            }
+            itInt = it.next();
+        }
+        return itInt.hasNext();
     }
 
     public Object next() {
-        return itr.next();
+        return itInt.next();
     }
 
     public void remove() {
