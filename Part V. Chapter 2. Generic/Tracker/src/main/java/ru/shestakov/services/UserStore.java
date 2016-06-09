@@ -1,27 +1,28 @@
 package ru.shestakov.services;
 
-public class UserStore<User> {
-
-    SimpleArray<User> sa;
+public class UserStore<User> extends AbstractStore {
 
     public UserStore(int size) {
-        this.sa = new SimpleArray<User>(size);
+        super(size);
     }
 
-    public void add(User user) {
-        this.sa.add(user);
+    @Override
+    public void add(Object o) {
+        super.add(o);
     }
 
-    public void update(int index, User user) {
-        this.sa.update(index, user);
+    @Override
+    public void update(int index, Object o) {
+        super.update(index, o);
     }
 
+    @Override
     public void delete(int index) {
-        this.delete(index);
+        super.delete(index);
     }
 
+    @Override
     public void get(int index) {
-        this.get(index);
+        super.get(index);
     }
-
 }

@@ -1,27 +1,28 @@
 package ru.shestakov.services;
 
-public class RoleStore<Role> {
-
-    SimpleArray<Role> sa;
+public class RoleStore<Role> extends AbstractStore {
 
     public RoleStore(int size) {
-        this.sa = new SimpleArray<Role>(size);
+        super(size);
     }
 
-    public void add(Role role) {
-        this.sa.add(role);
+    @Override
+    public void add(Object o) {
+        super.add(o);
     }
 
-    public void update(int index, Role role) {
-        this.sa.update(index, role);
+    @Override
+    public void update(int index, Object o) {
+        super.update(index, o);
     }
 
+    @Override
     public void delete(int index) {
-        this.delete(index);
+        super.delete(index);
     }
 
+    @Override
     public void get(int index) {
-        this.get(index);
+        super.get(index);
     }
-
 }
