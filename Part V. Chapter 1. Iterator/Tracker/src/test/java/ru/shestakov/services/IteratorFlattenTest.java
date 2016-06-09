@@ -19,12 +19,12 @@ public class IteratorFlattenTest {
         List<Iterator<Integer>> combined = new ArrayList<>(Arrays.asList(list1.iterator(), list2.iterator()));
 
         IteratorFlatten ioi = new IteratorFlatten();
-        ioi.convert(combined.iterator());
+        Iterator<Integer> iterator = ioi.convert(combined.iterator());
         int[] expected = {1, 2, 3, 4, 5, 6, 7, 8};
         int[] actual = new int[8];
         int i = 0;
-        while (ioi.hasNext()) {
-            actual[i] = (Integer) ioi.next();
+        while (iterator.hasNext()) {
+            actual[i] = iterator.next();
             i++;
         }
 
