@@ -62,13 +62,12 @@ public class SimpleContainerLinkedListTest {
     @Test
     public void checkLoop() {
         SimpleContainerLinkedList list = new SimpleContainerLinkedList();
-        list.first = list.addNode(null, 50);
-        list.first.next = list.addNode(list.first, 20);
-        list.first.next.next = list.addNode(list.first.next, 15);
-        list.first.next.next.next = list.addNode(list.first.next.next, 4);
-        list.first.next.next.next.next = list.addNode(list.first.next.next.next, 10);
+        list.first = list.addNode(null, 125);
+        list.first.next = list.addNode(list.first, 10);
+        list.first.next.next = list.addNode(list.first.next, 12);
+        list.first.next.next.next = list.addNode(list.first.next.next, 42);
 
-        list.first.next.next.next.next.next = list.first.next.next;
+        list.first.next.next.next.next = list.first.next.next;
         assertThat(list.hasLoop(list.first), is(true));
     }
 
