@@ -1,39 +1,28 @@
 package ru.shestakov.services;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
 public class SimpleContainerQueue<E> extends SimpleContainerLinkedList<E> {
 
-    private final LinkedList<E> values = new LinkedList<E>();
-    private int index = 0;
-
     public E poll() {
-        E e = values.get(0);
-        values.remove(0);
-        return e;
+        final Node<E> f = first;
+        return (f == null) ? null : unlinkFirst(f);
     }
 
     public E peek() {
-        return values.get(0);
+        final Node<E> f = first;
+        return (f == null) ? null : f.item;
     }
 
-    @Override
-    public void add(E e) {
-        values.add(e);
+    public E unlinkFirst(Node<E> f) {
+        E element = f.item;
+        Node<E> next = f.next;
+        f.item = null;
+        f.next = null;
+        first = next;
+        if (next == null)
+            last = null;
+        else
+            next.prev = null;
+        size--;
+        return element;
     }
-
-    @Override
-    public Iterator iterator() {
-        return null;
-    }
-
-    public boolean hasNext() {
-        return values.size() > index;
-    }
-
-    public E next() {
-        return values.get(index++);
-    }
-
 }

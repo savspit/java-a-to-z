@@ -41,5 +41,4 @@ public class SimpleContainerQueueTest {
 
         assertThat(arrL.peek(), is(1));
     }
-
 }

@@ -1,38 +1,47 @@
 package ru.shestakov.services;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
 public class SimpleContainerStack<E> extends SimpleContainerLinkedList<E> {
 
-    private final LinkedList<E> values = new LinkedList<E>();
-    private int index = 0;
-
     public E pop() {
-        E e = values.get(values.size()-1);
-        values.remove(values.size()-1);
-        return e;
+        return removeFirst();
     }
 
     public E peek() {
-        return values.get(values.size()-1);
+        Node<E> f = first;
+        return (f == null) ? null : f.item;
     }
 
     public void push(E e) {
-        values.add(e);
+        addFirst(e);
     }
 
-    @Override
-    public Iterator iterator() {
-        return null;
+    public void addFirst(E e) {
+        Node<E> f = first;
+        Node<E> newNode = new Node<>(null, e, f);
+        first = newNode;
+        if (f == null)
+            last = newNode;
+        else
+            f.prev = newNode;
+        size++;
     }
 
-    public boolean hasNext() {
-        return values.size() > index;
+    public E removeFirst() {
+        Node<E> f = first;
+        return unlinkFirst(f);
     }
 
-    public E next() {
-        return values.get(index++);
+    public E unlinkFirst(Node<E> f) {
+        E element = f.item;
+        Node<E> next = f.next;
+        f.item = null;
+        f.next = null;
+        first = next;
+        if (next == null)
+            last = null;
+        else
+            next.prev = null;
+        size--;
+        return element;
     }
-
 }

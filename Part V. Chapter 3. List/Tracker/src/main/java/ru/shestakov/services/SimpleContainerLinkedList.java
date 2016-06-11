@@ -128,4 +128,20 @@ public class SimpleContainerLinkedList<E> {
         }
     }
 
+    boolean hasLoop(Node node) {
+        Node<E> slow = node, fast = node;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    Node<E> addNode(Node<E> prev, E e) {
+        return new Node<>(prev, e, null);
+    }
 }
