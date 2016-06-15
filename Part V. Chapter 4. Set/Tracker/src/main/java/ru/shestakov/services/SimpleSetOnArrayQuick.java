@@ -43,31 +43,27 @@ public class SimpleSetOnArrayQuick<E>  {
         }
     }
 
-    public int binarySearch(E key, int hash) {
-
-        if(values.length == 0 || values[0] == null || (values[values.length-1] != null && values[values.length-1].hash < hash)) { return -1; }
-
-        return binarySearchRec(0, values.length-1, key, hash);
-
-    }
-
     public int binarySearchRec(int left, int right, E key, int hash) {
 
         int mid = left + (right - left) / 2;
 
-        if (values[left] != null && values[left].hash == hash && (values[left].key == key || values[left].key.equals(key))) { return 0 ;}
-        if (values[right] != null && values[right].hash == hash && (values[right].key == key || values[right].key.equals(key))) { return 0 ;}
-        if (values[mid] != null && values[mid].hash == hash && (values[mid].key == key || values[mid].key.equals(key))) { return 0 ;}
-
-        if (mid == left + 1) { return mid; }
-
-        if (values[mid] != null && values[mid].hash < hash) {
-            left = mid;
-        } else {
-            right = mid;
+        if (right < left) {
+            return mid;
         }
 
-        return binarySearchRec(left, right, key, hash);
+        if (values[left] != null && values[left].hash == hash && (values[left].key == key || values[left].key.equals(key))) { return -1 ;}
+        if (values[right] != null && values[right].hash == hash && (values[right].key == key || values[right].key.equals(key))) { return -1 ;}
+        if (values[mid] != null && values[mid].hash == hash && (values[mid].key == key || values[mid].key.equals(key))) { return -1 ;}
+
+        if (values[mid] == null) {
+            return binarySearchRec(left, mid - 1, key, hash);
+        }
+
+        if (values[mid] != null && values[mid].hash < hash) {
+            return binarySearchRec(mid + 1, right, key, hash);
+        }else {
+            return binarySearchRec(left, mid - 1, key, hash);
+        }
     }
 
     public void put(E key, Object value) {
@@ -75,21 +71,26 @@ public class SimpleSetOnArrayQuick<E>  {
         Entry result = null;
 
         int hash = hash(key);
-        int searchResult = binarySearch(key, hash);
 
-        if (searchResult != 0) {
+        if(values.length == 0 || values[0] == null || (values[values.length-1] != null && values[values.length-1].hash < hash)) {
             result = new Entry<>(hash(key), key, value, null);
-            if (searchResult == -1) {
-                ensureCapacityInternal(size + 1);
-                values[size++] = result;
-            }else {
+            ensureCapacityInternal(size + 1);
+            values[size++] = result;
+        }else {
+            result = new Entry<>(hash(key), key, value, null);
+
+            int searchResult = binarySearchRec(0, values.length-1, key, hash);
+
+            if (searchResult != -1) {
+                result = new Entry<>(hash(key), key, value, null);
+
                 ensureCapacityInternal(size + 1);
                 System.arraycopy(values, searchResult, values, searchResult + 1, size - searchResult);
+
                 values[searchResult] = result;
                 size++;
             }
         }
-
     }
 
     public int hash(Object k) {

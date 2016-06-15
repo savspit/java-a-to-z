@@ -26,6 +26,7 @@ public class SimpleSetOnArrayQuickTest {
         while (countq < 10000) {
             saq.add(countq++);
         }
+
         System.out.println("quick: " + (System.currentTimeMillis()-time2) + " ms");
 
     }
