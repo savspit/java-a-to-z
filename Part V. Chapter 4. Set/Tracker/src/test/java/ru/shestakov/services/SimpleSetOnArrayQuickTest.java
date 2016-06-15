@@ -11,24 +11,22 @@ public class SimpleSetOnArrayQuickTest {
 
         SimpleSetOnArray<Integer> sa = new SimpleSetOnArray<Integer>();
 
-        long time1 = System.nanoTime();
+        long time1 = System.currentTimeMillis();
         int count=0;
         while (count < 10000) {
             sa.add(count++);
         }
-        long time2 = System.nanoTime();
-        System.out.println("simple: " + (time2-time1));
+        System.out.println("simple: " + (System.currentTimeMillis()-time1) + " ms");
 
 
         SimpleSetOnArrayQuick<Integer> saq = new SimpleSetOnArrayQuick<Integer>();
 
-        long timeq1 = System.nanoTime();
+        long time2 = System.currentTimeMillis();
         int countq=0;
         while (countq < 10000) {
             saq.add(countq++);
         }
-        long timeq2 = System.nanoTime();
-        System.out.println("quick: " + (timeq2-timeq1));
+        System.out.println("quick: " + (System.currentTimeMillis()-time2) + " ms");
 
     }
 
