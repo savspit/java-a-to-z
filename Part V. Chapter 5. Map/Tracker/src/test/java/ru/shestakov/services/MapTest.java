@@ -28,7 +28,7 @@ public class MapTest {
         @Override
         public int hashCode() {
             int result = 17;
-            result = 31 * result +  name.hashCode();
+            result = 31 * result + name.hashCode();
             result = 31 * result + children;
             result = 31 * result + birthday.hashCode();
             return result;
