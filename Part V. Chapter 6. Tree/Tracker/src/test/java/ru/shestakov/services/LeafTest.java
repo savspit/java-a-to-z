@@ -31,6 +31,24 @@ public class LeafTest {
         return root;
     }
 
+    public Leaf<String> fillTheBalancedTree() {
+
+        Leaf<String> root = new Leaf<String>("root");
+        Leaf<String> leaf1 = new Leaf<String>("leaf1");
+        Leaf<String> leaf2 = new Leaf<String>("leaf2");
+        root.addChild(leaf1);
+        root.addChild(leaf2);
+        Leaf<String> leaf11 = new Leaf<String>("leaf11");
+        Leaf<String> leaf12 = new Leaf<String>("leaf12");
+        leaf1.addChild(leaf11);
+        leaf1.addChild(leaf12);
+        Leaf<String> leaf21 = new Leaf<String>("leaf21");
+        Leaf<String> leaf22 = new Leaf<String>("leaf22");
+        leaf2.addChild(leaf21);
+        leaf2.addChild(leaf22);
+        return root;
+    }
+
     @Test
     public void whenBFSShouldFindElement() {
 
@@ -53,5 +71,15 @@ public class LeafTest {
         System.out.println("time: " + (System.nanoTime()-time1) + " ns");
 
         assertNotNull(foundedLeaf);
+    }
+
+    @Test
+    public void whenNodesHasTwoBranchesTreeIsBalanced() {
+
+        Leaf<String> root = fillTheTree();
+        assertThat(root.treeIsBalanced(), is(false));
+
+        Leaf<String> rootB = fillTheBalancedTree();
+        assertThat(rootB.treeIsBalanced(), is(true));
     }
 }

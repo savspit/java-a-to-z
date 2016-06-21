@@ -70,4 +70,23 @@ public class Leaf<E> {
         }
         return null;
     }
+
+    public boolean treeIsBalanced() {
+        return treeIsBalancedRec(this.root);
+    }
+
+    public boolean treeIsBalancedRec(List<Leaf<E>> list) {
+
+        if(list.size() != 2 && list.size() != 0) {
+            return false;
+        }
+
+        for (Leaf<E> current : list) {
+            if (current.root.size() != 2 && current.root.size() != 0) {
+                return false;
+            }
+            return treeIsBalancedRec(current.root);
+        }
+        return true;
+    }
 }
