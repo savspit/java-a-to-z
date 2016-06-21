@@ -1,14 +1,17 @@
 package ru.shestakov.services;
 
+import com.sun.jmx.remote.internal.ArrayQueue;
+
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Leaf<E> {
 
     private List<Leaf<E>> root = new LinkedList<>();
     private Leaf<E> parent = null;
     private E e;
-    private int size;
 
     public Leaf(E e) {
         this(e, null);
@@ -30,13 +33,41 @@ public class Leaf<E> {
     }
 
     public void addChild (Leaf<E> child) {
-        child.parent = this.parent;
+        child.parent = this;
         this.root.add(child);
-        size++;
     }
 
-    public int size() {
-        return size;
+    // breadth-first search — BFS
+    public Leaf<E> getByBFS(E e) {
+
+        LinkedList<Leaf<E>> queue = new LinkedList<>();
+        queue.addAll(this.root);
+
+        while (!queue.isEmpty()) {
+            Leaf<E> current = queue.pop();
+            if (current.e.equals(e)) {
+                return current;
+            }
+            queue.addAll(current.root);
+        }
+        return null;
     }
 
+    // depth-first search, DFS
+    public Leaf<E> getByDFS(E e) {
+        return getByDFSRec(this.root, e);
+    }
+
+    public Leaf<E> getByDFSRec(List<Leaf<E>> list, E e) {
+        for (Leaf<E> current : list) {
+            if (current.e.equals(e)) {
+                return current;
+            }
+            Leaf<E> foundedLeaf = getByDFSRec(current.root, e);
+            if (foundedLeaf != null) {
+                return foundedLeaf;
+            }
+        }
+        return null;
+    }
 }
