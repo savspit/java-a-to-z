@@ -34,4 +34,16 @@ public class LeafBinaryTest {
         assertNull(searchBinaryTree.getLeaf(100).parent);
     }
 
+    @Test
+    public void whenFindValueShouldFind() {
+
+        LeafBinary<Integer> searchBinaryTree = fillTheBinaryTree();
+
+        long time1 = System.nanoTime();
+        Object foundedLeaf = searchBinaryTree.getLeaf(175);
+        System.out.println("time: " + (System.nanoTime()-time1) + " ns");
+
+        assertNotNull(foundedLeaf);
+    }
+
 }
