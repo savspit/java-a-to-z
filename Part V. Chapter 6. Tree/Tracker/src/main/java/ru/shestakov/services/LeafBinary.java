@@ -5,7 +5,6 @@ import java.util.Comparator;
 public class LeafBinary<E> {
 
     private Leaf<E> root = null;
-    private Comparator<? super E> comparator;
     private int size;
 
     public class Leaf<E> {
@@ -24,14 +23,6 @@ public class LeafBinary<E> {
         }
     }
 
-    public LeafBinary() {
-        comparator = null;
-    }
-
-    public LeafBinary(Comparator<? super E> comparator) {
-        this.comparator = comparator;
-    }
-
     public void add(E e) {
         Leaf<E> r = root;
         if (r == null) {
@@ -41,31 +32,18 @@ public class LeafBinary<E> {
         }
         int cmp;
         Leaf<E> parent;
-        Comparator<? super E> cpr = comparator;
-        if (cpr != null) {
-            do {
-                parent = r;
-                cmp = cpr.compare(e, r.e);
-                if (cmp < 0)
-                    r = r.left;
-                else if (cmp > 0)
-                    r = r.right;
-                else
-                    r.addValue(e);
-            } while (r != null);
-        } else {
-            Comparable<? super E> value = (Comparable<? super E>) e;
-            do {
-                parent = r;
-                cmp = value.compareTo(r.e);
-                if (cmp < 0)
-                    r = r.left;
-                else if (cmp > 0)
-                    r = r.right;
-                else
-                    r.addValue(e);
-            } while (r != null);
-        }
+        Comparable<? super E> value = (Comparable<? super E>) e;
+        do {
+            parent = r;
+            cmp = value.compareTo(r.e);
+            if (cmp < 0)
+                r = r.left;
+            else if (cmp > 0)
+                r = r.right;
+            else
+                r.addValue(e);
+        } while (r != null);
+
         Leaf<E> leaf = new Leaf<>(e, parent);
         if (cmp < 0)
             parent.left = leaf;
