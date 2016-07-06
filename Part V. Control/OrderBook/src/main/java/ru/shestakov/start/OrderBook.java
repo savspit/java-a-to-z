@@ -1,6 +1,8 @@
 package ru.shestakov.start;
 
-import ru.shestakov.services.ReadXMLFile;
+import ru.shestakov.xml.ReadXMLFileBR;
+import ru.shestakov.xml.ReadXMLFileDOM;
+import ru.shestakov.xml.ReadXMLFileSAX;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,21 +21,19 @@ public class OrderBook {
     }
 
     public void parse(File xmlFile) throws IOException {
-
         setStartTime(System.currentTimeMillis());
-
-        ReadXMLFile sb = new ReadXMLFile();
-        sb.setXmlFile(xmlFile);
-        sb.parse();
-        sb.convert();
-        sb.print();
-
+        ReadXMLFileBR xmlParser = new ReadXMLFileBR();
+        //ReadXMLFileSAX xmlParser = new ReadXMLFileSAX();
+        //ReadXMLFileDOM xmlParser = new ReadXMLFileDOM();
+        xmlParser.setXmlFile(xmlFile);
+        xmlParser.parse();
+        xmlParser.convert();
+        xmlParser.print();
         setParsed(true);
-
     }
 
     public void showParseTime() {
-        System.out.println("parsing time is: " + (System.currentTimeMillis()-this.startTime) + " ms");
+        System.out.println(String.format("parsing time is: %d ms", System.currentTimeMillis()-this.startTime));
     }
 
     public boolean isParsed() {

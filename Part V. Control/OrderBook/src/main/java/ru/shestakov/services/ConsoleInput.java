@@ -23,10 +23,9 @@ public class ConsoleInput implements Input{
                 if (!xmlFile.canRead()) {
                     throw new InputException("can`t read the file. check your rights");
                 }
-
                 return xmlFile;
             } catch (InputException ie) {
-                System.out.print(ie.getMessage() + question);
+                System.out.print(String.format("%s %s", ie.getMessage(), question));
             }
         }
     }

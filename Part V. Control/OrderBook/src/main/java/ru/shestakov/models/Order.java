@@ -35,11 +35,8 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!(o instanceof Order)) return false;
-
         Order order = (Order) o;
-
         return orderId == order.orderId;
-
     }
 
     @Override

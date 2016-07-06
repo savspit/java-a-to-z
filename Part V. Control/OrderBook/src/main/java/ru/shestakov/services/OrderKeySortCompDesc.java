@@ -2,7 +2,7 @@ package ru.shestakov.services;
 
 import java.util.Comparator;
 
-// from low to hi
+// from hi to low
 public class OrderKeySortCompDesc implements Comparator<KeySort> {
 
     @Override
