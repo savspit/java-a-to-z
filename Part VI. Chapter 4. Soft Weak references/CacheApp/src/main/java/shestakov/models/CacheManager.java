@@ -20,7 +20,7 @@ public class CacheManager {
 
     public void checkKey(String key) throws IOException {
         if (this.cache == null) { cache = new HashMap<>(); }
-        if (!containsKey(key)) {
+        if (!valueExists(key)) {
             loadDataFromFile(key);
         }
     }
@@ -31,8 +31,8 @@ public class CacheManager {
         this.cache.put(key, reader.getContent());
     }
 
-    public boolean containsKey(String key) {
-        return this.cache.containsKey(key);
+    public boolean valueExists(String key) {
+        return this.cache.containsKey(key) && this.cache.get(key) != null;
     }
 
     public void showValue(String key) {
