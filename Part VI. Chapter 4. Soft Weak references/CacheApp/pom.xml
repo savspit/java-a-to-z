@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>groupId</groupId>
+    <groupId>ru.shestakov</groupId>
     <artifactId>cacheApp</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <build>
         <plugins>
             <plugin>
@@ -19,6 +15,7 @@
             </plugin>
         </plugins>
     </build>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -26,5 +23,4 @@
             <version>4.12</version>
         </dependency>
     </dependencies>
-
 </project>

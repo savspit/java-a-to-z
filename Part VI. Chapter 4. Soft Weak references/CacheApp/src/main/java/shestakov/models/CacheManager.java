@@ -8,11 +8,6 @@ import java.util.HashMap;
 
 public class CacheManager {
     private HashMap<String,SoftReference<String>> cache;
-    private String dir;
-
-    public void setDir(String dir) {
-        this.dir = dir;
-    }
 
     public SoftReference<String> getValue(String key) {
         return this.cache.get(key);
@@ -27,8 +22,7 @@ public class CacheManager {
 
     public void loadDataFromFile(String key) throws IOException {
         ReadTXTFile reader = new ReadTXTFile();
-        reader.setPath(this.dir, key);
-        this.cache.put(key, reader.getContent());
+        this.cache.put(key, reader.getContent(key));
     }
 
     public boolean valueExists(String key) {
@@ -37,10 +31,6 @@ public class CacheManager {
 
     public void showValue(String key) {
         System.out.println(getValue(key).get());
-    }
-
-    public void remove(String key) {
-        this.cache.remove(key);
     }
 
 }

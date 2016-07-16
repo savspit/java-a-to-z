@@ -24,7 +24,6 @@ public class StartUI {
 
     public static void main(String[] args) throws IOException {
         CacheManager cm = new CacheManager();
-        cm.setDir("C:\\Users\\user\\Documents\\memory\\");
         Input input = new ConsoleInput();
         new StartUI(input).init(cm);
     }
