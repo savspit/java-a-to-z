@@ -11,7 +11,7 @@ import java.util.List;
 public class StartUITest {
 
     @Test
-    public void whenGCisDoneShouldKeepValue() throws IOException, InterruptedException {
+    public void whenGCisDoneShouldKeepSoftReference() throws IOException, InterruptedException {
         CacheManager cm = new CacheManager();
         String key = "UseSerialGC.txt";
         cm.checkKey(key);
